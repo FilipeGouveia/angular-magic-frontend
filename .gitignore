@@ -3,3 +3,5 @@
 /.tmp
 /.sass-cache
 /bower_components
+/etc/design/.sass-cache
+/etc/design/Magic/.sass-cache
