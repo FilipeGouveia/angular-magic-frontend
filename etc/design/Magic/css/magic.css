@@ -7,3 +7,12 @@
 .header {
   background-color: #27437B;
 }
+
+/* line 14, ../sass/magic.scss */
+.has-sidebar aside {
+  width: 250px;
+}
+/* line 17, ../sass/magic.scss */
+.has-sidebar .content {
+  padding-right: 300px;
+}
