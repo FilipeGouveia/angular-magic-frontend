@@ -1,13 +1,21 @@
 @import "base";
 
-.body .widget {
-    h2 {
-        text-align: center;
+.body {
+	.widget {
+    	h2 {
+        	text-align: center;
+    	}
     }
+
+    background-color: $body-background;
 }
 
 .header {
     background-color: $header-background;
+    ul.menu {
+    	font-size: 1.2em;
+    	font-weight: 400;
+	}
 }
 
 .has-sidebar{
@@ -17,4 +25,25 @@
 	.content{
 		padding-right: 300px;
 	}
+}
+
+.ink-flex {
+	display: flex;
+}
+
+.chart {
+	min-height: 250px;
+}
+
+.border-top {
+    border-top: 1px solid #ddd;
+}
+.border-bottom {
+    border-bottom: 1px solid #ddd;
+}
+.border-left {
+    border-left: 1px solid #ddd;
+}
+.border-right {
+    border-right: 1px solid #ddd;
 }

@@ -12,16 +12,17 @@
     <!--   ##########    TO USE OFFLINE    ########   -->
     <link rel="stylesheet" href="http://localhost:9000/bower_components/Ink/dist/css/ink.css" />
     <script src="http://localhost:9000/bower_components/Ink/dist/js/ink-all.js"></script>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.css" />
   </head>
   <body>
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="header padding">
+    <div class="header half-padding">
       <nav class="ink-navigation" role="navigation">
         <ul class="menu horizontal hide-small hide-tiny">
-          <li class="active"><a href="">Home</a></li>
+          <li class="active"><a href="" alt="home"><span class="icon"><i class="fa fa-home"></i></span></a></li>
           <li><a href="about">Routines</a></li>
           <li><a href="">People</a></li>
           <li><a href="">Stats</a></li>
@@ -30,11 +31,11 @@
       </nav>
     </div>
 
-    <div class="body vertical-padding">
+    <div class="body half-vertical-padding">
         <div class="container">
             <div class="ink-grid">
               <div class="block has-sidebar">
-                <aside class="push-right">
+                <aside class="push-right border-left half-horizontal-padding">
                   <div class="sidebar">
                     <h3>Quick Links</h3>
                     <ul class="links">
@@ -55,22 +56,71 @@
                   </div>
                 </aside>
                 <div class="column-group content">
-                    <div class="widget all-50 tiny-100 small-100">
-                        <h2>Sugestões/Challenges</h2>
-                        <div></div>
+                  <div class="ink-flex quarter-vertical-padding">
+                    <div class="widget all-50 tiny-100 small-100 half-horizontal-padding">
+                        <h2>Challenges</h2>
+                        <div>
+                          <ul>
+                            <li>Perform <a href="#">X</a> for someone.</li>
+                            <li>Practise <a href="#">Y</a></li>
+                          </ul>
+                        </div>
                     </div>
-                    <div class="widget all-50 tiny-100 small-100">
+                    <div class="widget all-50 tiny-100 small-100 half-horizontal-padding">
                         <h2>Last performances</h2>
-                        <div></div>
+                        <div>
+                          <ul>
+                            <li><a href="#">Twisting the Aces</a></li>
+                            <li><a href="#">Twisting the Aces</a></li>
+                            <li><a href="#">Twisting the Aces</a></li>
+                            <li><a href="#">Twisting the Aces</a></li>
+                            <li><a href="#">Twisting the Aces</a></li>
+                          </ul>
+                        </div>
                     </div>
-                    <div class="widget all-50 tiny-100 small-100">
+                  </div>
+                  <div class="ink-flex quarter-vertical-padding">
+                    <div class="widget all-50 tiny-100 small-100 half-horizontal-padding">
                         <h2>Stats</h2>
-                        <div></div>
+                          <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                          <script type="text/javascript">
+                            google.charts.load("current", {packages:["corechart"]});
+                            google.charts.setOnLoadCallback(drawChart);
+                            function drawChart() {
+                              var data = google.visualization.arrayToDataTable([
+                                ['Performance', '#'],
+                                ['Twisting the Aces', 9],
+                                ['Card Warp', 15],
+                                ['Stolen Cards',  2]
+                              ]);
+
+                              var options = {
+                                title: "Performances of the last 7 days",
+                                pieHole: 0.4,
+                                pieSliceText: "value",
+                                backgroundColor: "#f7f7ff",
+                              };
+
+                              var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+                              chart.draw(data, options);
+                            }
+                          </script>
+                        <div class="chart" id="donutchart"></div>
                     </div>
-                    <div class="widget all-50 small-100 tiny-100">
-                        <h2>Quick Links</h2>
-                        <div></div>
+                    <div class="widget all-50 small-100 tiny-100 half-horizontal-padding">
+                        <h2>Last Spectators</h2>
+                        <div>
+                          <ul>
+                            <li>Filipe Gouveia</li>
+                            <li>José Castro</li>
+                            <li>Filipe Gouveia</li>
+                            <li>José Castro</li>
+                            <li>Filipe Gouveia</li>
+                            <li>José Castro</li>
+                          </ul>
+                        </div>
                     </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -79,7 +129,6 @@
 
     <div class="footer">
       <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
       </div>
     </div>
 

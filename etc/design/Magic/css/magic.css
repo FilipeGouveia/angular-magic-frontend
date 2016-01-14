@@ -1,18 +1,57 @@
-/* line 4, ../sass/magic.scss */
+/* line 3, ../sass/magic.scss */
+.body {
+  background-color: #f7f7ff;
+}
+/* line 5, ../sass/magic.scss */
 .body .widget h2 {
   text-align: center;
 }
 
-/* line 9, ../sass/magic.scss */
+/* line 13, ../sass/magic.scss */
 .header {
   background-color: #27437B;
 }
+/* line 15, ../sass/magic.scss */
+.header ul.menu {
+  font-size: 1.2em;
+  font-weight: 400;
+}
 
-/* line 14, ../sass/magic.scss */
+/* line 22, ../sass/magic.scss */
 .has-sidebar aside {
   width: 250px;
 }
-/* line 17, ../sass/magic.scss */
+/* line 25, ../sass/magic.scss */
 .has-sidebar .content {
   padding-right: 300px;
+}
+
+/* line 30, ../sass/magic.scss */
+.ink-flex {
+  display: flex;
+}
+
+/* line 34, ../sass/magic.scss */
+.chart {
+  min-height: 250px;
+}
+
+/* line 38, ../sass/magic.scss */
+.border-top {
+  border-top: 1px solid #ddd;
+}
+
+/* line 41, ../sass/magic.scss */
+.border-bottom {
+  border-bottom: 1px solid #ddd;
+}
+
+/* line 44, ../sass/magic.scss */
+.border-left {
+  border-left: 1px solid #ddd;
+}
+
+/* line 47, ../sass/magic.scss */
+.border-right {
+  border-right: 1px solid #ddd;
 }
