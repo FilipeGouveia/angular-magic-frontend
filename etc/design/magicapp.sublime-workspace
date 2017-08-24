@@ -1,0 +1,1032 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"m",
+				"mumUsed"
+			],
+			[
+				"mallo",
+				"malloc_zone_statistics"
+			],
+			[
+				"include",
+				"included"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 8265,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "% default positions\n#const positions=52.\n#const moves=10.\n\nmove(0..moves).\n%action(nothing).\n\n% cannot have two cards at the same position\n:- on(Card, Pos, T), on(Card2, Pos, T), Card != Card2.\n:- on(Card, Pos, T), on(Card, Pos2, T), Pos != Pos2.\n\n% initialization\non(Card, Pos, 0) :- init(Card, Pos).\n\n% goal\n:- not 1{ on(Card,Pos,T) : move(T)}, goal(Card,Pos).\n:- not 1{ on(Card, Pos, T)}, 1{on(Card2, Pos2, T)}, move(T), goal(Card, Pos), goal(Card2, Pos2), Card != Card2, Pos != Pos2.\n\n% action\n0{ action(A,T): action(A)}1 :- move(T).\n%:- action(A, T), not action(A).\n%:- not 1{ action(A, T) }1, action(A).\n\n% minimize actions\n#minimize { action(A,T) : action(A), move(T)}.\n\n%#hide .\n%#show action/2 .",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/base.gringo",
+			"file_size": 704,
+			"file_write_time": 130979620870000000,
+			"settings":
+			{
+				"buffer_size": 704,
+				"line_ending": "Unix",
+				"name": "base.gringo"
+			}
+		},
+		{
+			"contents": "#include <incmode>.\n\n#const imin = 1.\n% default positions\n#const positions=52.\n%#const moves=10.\n\n#program base.\n% initialization\non(Card, Pos, 0) :- init(Card, Pos).\n\n#program step(k).\nmove(1..k).\n\n% action\n0{ action(A,k): action(A), move(k)}1.\non(Card,Pos,k) :- on(Card,Pos,k-1), not 1{ action(A,k) : action(A)}, move(k).\n%:- action(A, T), not action(A).\n%:- not 1{ action(A, T) }1, action(A).\n\n\n% cannot have two cards at the same position\n:- on(Card, Pos, T), on(Card2, Pos, T), Card != Card2.\n:- on(Card, Pos, T), on(Card, Pos2, T), Pos != Pos2.\n\n\n\n#program check(k).\n% goal\n:- goal(Card,Pos), not on(Card,Pos,k), query(k).\n%:- not 1{ on(Card,Pos,T) : move(T)}, goal(Card,Pos).\n%:- not 1{ on(Card, Pos, T)}, 1{on(Card2, Pos2, T)}, move(T), goal(Card, Pos), goal(Card2, Pos2), Card != Card2, Pos != Pos2.\n\n\n% minimize actions\n%#minimize { action(A,T) : action(A), move(T)}.\n\n%#hide .\n#show action/2 .",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/base.gringo",
+			"file_size": 904,
+			"file_write_time": 131007957330000000,
+			"settings":
+			{
+				"buffer_size": 904,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "% default positions\n#const positions=52.\n#const moves=10.\n\nmove(0..moves).\n%action(nothing).\n\n% cannot have two cards at the same position\n:- on(Card, Pos, T), on(Card2, Pos, T), Card != Card2.\n:- on(Card, Pos, T), on(Card, Pos2, T), Pos != Pos2.\n\n% initialization\non(Card, Pos, 0) :- init(Card, Pos).\n\n% goal\n:- not 1{ on(Card,Pos,T) : move(T)}, goal(Card,Pos).\n:- not 1{ on(Card, Pos, T)}, 1{on(Card2, Pos2, T)}, move(T), goal(Card, Pos), goal(Card2, Pos2), Card != Card2, Pos != Pos2.\n\n% action\n0{ action(A,T): action(A)}1 :- move(T), T > 0.\n%:- action(A, T), not action(A).\n%:- not 1{ action(A, T) }1, action(A).\n\n% minimize actions\n#minimize { 1,A,T : action(A,T), action(A), move(T)}.\n\n%#hide .\n#show action/2.",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Minimization/base.gringo",
+			"file_size": 716,
+			"file_write_time": 131007958380000000,
+			"settings":
+			{
+				"buffer_size": 716,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "goal(cjs,1).\ngoal(ckc,2).\ngoal(c5c,3).\ngoal(c2h,4).\ngoal(c9s,5).\ngoal(cas,6).\ngoal(c3h,7).\ngoal(c6c,8).\ngoal(c8d,9).\ngoal(cac,10).\ngoal(c10s,11).\ngoal(c5h,12).\ngoal(c2d,13).\ngoal(ckd,14).\ngoal(c7d,15).\ngoal(c8c,16).\ngoal(c3s,17).\ngoal(cad,18).\ngoal(c7s,19).\ngoal(c5s,20).\ngoal(cqd,21).\ngoal(cah,22).\ngoal(c8s,23).\ngoal(c3d,24).\ngoal(c7h,25).\ngoal(cqh,26).\ngoal(c5d,27).\ngoal(c7c,28).\ngoal(c4h,29).\ngoal(ckh,30).\ngoal(c4d,31).\ngoal(c10d,32).\ngoal(cjc,33).\ngoal(cjh,34).\ngoal(c10c,35).\ngoal(cjd,36).\ngoal(c4s,37).\ngoal(c10h,38).\ngoal(c6h,39).\ngoal(c3c,40).\ngoal(c2s,41).\ngoal(c9h,42).\ngoal(cks,43).\ngoal(c6s,44).\ngoal(c4c,45).\ngoal(c8h,46).\ngoal(c9c,47).\ngoal(cqs,48).\ngoal(c6d,49).\ngoal(cqc,50).\ngoal(c2c,51).\ngoal(c9d,52).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/goal-test.gringo",
+			"file_size": 722,
+			"file_write_time": 131007410650000000,
+			"settings":
+			{
+				"buffer_size": 722,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "init(cjs,1).\ninit(ckc,2).\ninit(c5c,3).\ninit(c2h,4).\ninit(c9s,5).\ninit(cas,6).\ninit(c3h,7).\ninit(c6c,8).\ninit(c8d,9).\ninit(cac,10).\ninit(c10s,11).\ninit(c5h,12).\ninit(c2d,13).\ninit(ckd,14).\ninit(c7d,15).\ninit(c8c,16).\ninit(c3s,17).\ninit(cad,18).\ninit(c7s,19).\ninit(c5s,20).\ninit(cqd,21).\ninit(cah,22).\ninit(c8s,23).\ninit(c3d,24).\ninit(c7h,25).\ninit(cqh,26).\ninit(c5d,27).\ninit(c7c,28).\ninit(c4h,29).\ninit(ckh,30).\ninit(c4d,31).\ninit(c10d,32).\ninit(cjc,33).\ninit(cjh,34).\ninit(c10c,35).\ninit(cjd,36).\ninit(c4s,37).\ninit(c10h,38).\ninit(c6h,39).\ninit(c3c,40).\ninit(c2s,41).\ninit(c9h,42).\ninit(cks,43).\ninit(c6s,44).\ninit(c4c,45).\ninit(c8h,46).\ninit(c9c,47).\ninit(cqs,48).\ninit(c6d,49).\ninit(cqc,50).\ninit(c2c,51).\ninit(c9d,52).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/input-aronson.gringo",
+			"file_size": 722,
+			"file_write_time": 131007410560000000,
+			"settings":
+			{
+				"buffer_size": 722,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "% cut definition\naction(cut).\n\n#program step(k).\n1{cut(1..positions-1,T)}1 :- action(cut,T).\n%:- action(cut, T), not cut(Pos, T), Pos < positions.\n\non(Card, P, T) :- on(Card, Pos, T-1), action(cut, T), cut(PosCut, T), Pos > PosCut, P = Pos-PosCut.\n\non(Card, P, T) :- on(Card, Pos, T-1), action(cut, T), cut(PosCut, T), Pos <= PosCut, P = Pos+(positions-PosCut).\n\n#show cut/2.\n",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/cut.gringo",
+			"file_size": 376,
+			"file_write_time": 131007430580000000,
+			"settings":
+			{
+				"buffer_size": 376,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "% faro-in definition\naction(faroin).\n\n#program step(k).\non(Card, P, T) :- on(Card, Pos, T-1), action(faroin, T), Pos <= positions/2, P = Pos+Pos.\n\non(Card, P, T) :- on(Card, Pos, T-1), action(faroin, T), Pos > positions/2, P = (Pos-(positions/2)) + (Pos-(positions/2)) - 1.",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/faro-in.gringo",
+			"file_size": 273,
+			"file_write_time": 131007431440000000,
+			"settings":
+			{
+				"buffer_size": 273,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "% faro-out definition\naction(faroout).\n\n#program step(k).\non(Card, P, T) :- on(Card, Pos, T-1), action(faroout, T), Pos <= positions/2, P = Pos+Pos-1.\n\non(Card, P, T) :- on(Card, Pos, T-1), action(faroout, T), Pos > positions/2, P = (Pos-(positions/2)) + (Pos-(positions/2)).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/faro-out.gringo",
+			"file_size": 275,
+			"file_write_time": 131007431550000000,
+			"settings":
+			{
+				"buffer_size": 275,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "% run definition\naction(run).\n\n#program step(k).\n1{run(1..positions-1,1..positions-1,T)}1 :- action(run,T).\n\non(Card, P, T) :- on(Card, Pos, T-1), action(run, T), run(PosCut, RunCards, T), Pos > PosCut, Pos <= PosCut+RunCards, P = PosCut - ((Pos-PosCut-RunCards)+1).\n\non(Card, P, T) :- on(Card, Pos, T-1), action(run, T), run(PosCut, RunCards, T), Pos > PosCut, Pos > PosCut+RunCards, P = Pos-PosCut-RunCards.\n\non(Card, P, T) :- on(Card, Pos, T-1), action(run, T), run(PosCut, Runcards, T), Pos <= PosCut, P = Pos+(positions-PosCut).\n\n#show run/3.",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/run.gringo",
+			"file_size": 547,
+			"file_write_time": 131007432380000000,
+			"settings":
+			{
+				"buffer_size": 547,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/filipegouveia/Documents/Projects/clingo-4.5.4-macos-10.9/examples/examples/clingo/iclingo/example.lp",
+			"settings":
+			{
+				"buffer_size": 178,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "init(cjs,1).\ninit(ckc,2).\ninit(c5c,3).\ninit(c2h,4).\ninit(c9s,5).\ninit(cas,6).\ninit(c3h,7).\ninit(c6c,8).\ninit(c8d,9).\ninit(cac,10).\ninit(c10s,11).\ninit(c5h,12).\ninit(c2d,13).\ninit(ckd,14).\ninit(c7d,15).\ninit(c8c,16).\ninit(c3s,17).\ninit(cad,18).\ninit(c7s,19).\ninit(c5s,20).\ninit(cqd,21).\ninit(cah,22).\ninit(c8s,23).\ninit(c3d,24).\ninit(c7h,25).\ninit(cqh,26).\ninit(c5d,27).\ninit(c7c,28).\ninit(c4h,29).\ninit(ckh,30).\ninit(c4d,31).\ninit(c10d,32).\ninit(cjc,33).\ninit(cjh,34).\ninit(c10c,35).\ninit(cjd,36).\ninit(c4s,37).\ninit(c10h,38).\ninit(c6h,39).\ninit(c3c,40).\ninit(c2s,41).\ninit(c9h,42).\ninit(cks,43).\ninit(c6s,44).\ninit(c4c,45).\ninit(c8h,46).\ninit(c9c,47).\ninit(cqs,48).\ninit(c6d,49).\ninit(cqc,50).\ninit(c2c,51).\ninit(c9d,52).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/input-aronson.gringo",
+			"file_size": 722,
+			"file_write_time": 130979577110000000,
+			"settings":
+			{
+				"buffer_size": 722,
+				"line_ending": "Unix",
+				"name": "input.gringo"
+			}
+		},
+		{
+			"contents": "goal(c5c,1).\ngoal(c2h,2).\ngoal(c9s,3).\ngoal(cas,4).\ngoal(c3h,5).\ngoal(c6c,6).\ngoal(c8d,7).\ngoal(cac,8).\ngoal(c10s,9).\ngoal(c5h,10).\ngoal(c2d,11).\ngoal(ckd,12).\ngoal(c7d,13).\ngoal(c8c,14).\ngoal(c3s,15).\ngoal(cad,16).\ngoal(c7s,17).\ngoal(c5s,18).\ngoal(cqd,19).\ngoal(cah,20).\ngoal(c8s,21).\ngoal(c3d,22).\ngoal(c7h,23).\ngoal(cqh,24).\ngoal(c5d,25).\ngoal(c7c,26).\ngoal(c4h,27).\ngoal(ckh,28).\ngoal(c4d,29).\ngoal(c10d,30).\ngoal(cjc,31).\ngoal(cjh,32).\ngoal(c10c,33).\ngoal(cjd,34).\ngoal(c4s,35).\ngoal(c10h,36).\ngoal(c6h,37).\ngoal(c3c,38).\ngoal(c2s,39).\ngoal(c9h,40).\ngoal(cks,41).\ngoal(c6s,42).\ngoal(c4c,43).\ngoal(c8h,44).\ngoal(c9c,45).\ngoal(cqs,46).\ngoal(c6d,47).\ngoal(cqc,48).\ngoal(c2c,49).\ngoal(c9d,50).\ngoal(cjs,51).\ngoal(ckc,52).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/goal-test2.gringo",
+			"file_size": 722,
+			"file_write_time": 130979622750000000,
+			"settings":
+			{
+				"buffer_size": 722,
+				"line_ending": "Unix",
+				"name": "goal-test.gringo"
+			}
+		},
+		{
+			"contents": "% cut definition\naction(cut).\n\n1{cut(1..positions-1,T)}1 :- action(cut,T).\n%:- action(cut, T), not cut(Pos, T), Pos < positions.\n\non(Card, P, T+1) :- on(Card, Pos, T), action(cut, T), cut(PosCut, T), Pos > PosCut, P := Pos-PosCut.\n\non(Card, P, T+1) :- on(Card, Pos, T), action(cut, T), cut(PosCut, T), Pos <= PosCut, P := Pos+(positions-PosCut).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/cut.gringo",
+			"file_size": 345,
+			"file_write_time": 130981996940000000,
+			"settings":
+			{
+				"buffer_size": 345,
+				"line_ending": "Unix",
+				"name": "cut.gringo"
+			}
+		},
+		{
+			"contents": "% run definition\naction(run).\n\n1{run(1..positions-1,1..positions-1,T)}1 :- action(run,T).\n\non(Card, P, T+1) :- on(Card, Pos, T), action(run, T), cut(PosCut, RunCards, T), Pos > PosCut, Pos <= PosCut+RunCards, P := PosCut - ((Pos-PosCut-RunCards)+1).\n\non(Card, P, T+1) :- on(Card, Pos, T), action(run, T), cut(PosCut, RunCards, T), Pos > PosCut, Pos > PosCut+RunCards, P := Pos-PosCut-RunCards.\n\non(Card, P, T+1) :- on(Card, Pos, T), action(run, T), cut(PosCut, Runcards, T), Pos <= PosCut, P := Pos+(positions-PosCut).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/run.gringo",
+			"file_size": 518,
+			"file_write_time": 130981997270000000,
+			"settings":
+			{
+				"buffer_size": 518,
+				"line_ending": "Unix",
+				"name": "run.gringo"
+			}
+		},
+		{
+			"contents": "node(1..6).\n\nedge(1,2).\nedge(2,4).\nedge(3,1).\nedge(4,1).\nedge(5,3).\nedge(6,2).\nedge(1,3).\nedge(2,5).\nedge(3,4).\nedge(4,2).\nedge(5,4).\nedge(6,3).\nedge(1,4).\nedge(2,6).\nedge(3,5).\nedge(5,6).\nedge(6,5).\n\ncost(1,2,2).\ncost(2,4,2).\ncost(3,1,3).\ncost(4,1,1).\ncost(5,3,2).\ncost(6,2,4).\ncost(1,3,3).\ncost(2,5,2).\ncost(3,4,2).\ncost(4,2,2).\ncost(5,4,2).\ncost(6,3,3).\ncost(1,4,1).\ncost(2,6,4).\ncost(3,5,2).\ncost(5,6,1).\ncost(6,5,1).\n\n\n\n1{cycle(X,Y):edge(X,Y)}1 :- node(X).\n1{cycle(X,Y):edge(X,Y)}1 :- node(Y).\n\nreached(Y) :- cycle(1,Y).\nreached(Y) :- cycle(X,Y), reached(X).\n\n:-node(Y), not reached(Y).\n\n#minimize { C,X,Y : cycle(X,Y), cost(X,Y,C) }.\n\n%#hide.\n#show cycle/2.\n#show cost/3.",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/teste.clasp.gringo",
+			"file_size": 677,
+			"file_write_time": 130982109550000000,
+			"settings":
+			{
+				"buffer_size": 677,
+				"line_ending": "Unix",
+				"name": "teste.clasp.gringo"
+			}
+		},
+		{
+			"contents": "% faro-in definition\naction(faroin).\n\non(Card, P, T+1) :- on(Card, Pos, T), action(faroin, T), Pos <= positions/2, P := Pos+Pos.\n\non(Card, P, T+1) :- on(Card, Pos, T), action(faroin, T), Pos > positions/2, P := (Pos-(positions/2)) + (Pos-(positions/2)) - 1.",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/faro-in.gringo",
+			"file_size": 257,
+			"file_write_time": 130981997050000000,
+			"settings":
+			{
+				"buffer_size": 257,
+				"line_ending": "Unix",
+				"name": "faro-in.gringo"
+			}
+		},
+		{
+			"contents": "% faro-out definition\naction(faroout).\n\non(Card, P, T+1) :- on(Card, Pos, T), action(faroout, T), Pos <= positions/2, P := Pos+Pos-1.\n\non(Card, P, T+1) :- on(Card, Pos, T), action(faroout, T), Pos > positions/2, P := (Pos-(positions/2)) + (Pos-(positions/2)).",
+			"file": "/Users/filipegouveia/Documents/Magic/ASP/faro-out.gringo",
+			"file_size": 259,
+			"file_write_time": 131007362380000000,
+			"settings":
+			{
+				"buffer_size": 259,
+				"line_ending": "Unix",
+				"name": "faro-out.gringo"
+			}
+		},
+		{
+			"file": "Magic/sass/magic.scss",
+			"settings":
+			{
+				"buffer_size": 1936,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Magic/sass/_base.scss",
+			"settings":
+			{
+				"buffer_size": 59,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Magic/css/magic.css",
+			"settings":
+			{
+				"buffer_size": 2575,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/filipegouveia/Documents/Projects/MagicApp",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/.tmp",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/app",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/etc",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/etc/design",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/etc/design/Magic",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/etc/design/Magic/css",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/etc/design/Magic/sass"
+	],
+	"file_history":
+	[
+		"/Users/filipegouveia/Documents/Magic/ASP/Minimization/run.gringo",
+		"/Users/filipegouveia/Documents/Magic/ASP/Minimization/faro-out.gringo",
+		"/Users/filipegouveia/Documents/Magic/ASP/Minimization/faro-in.gringo",
+		"/Users/filipegouveia/Documents/Magic/ASP/Minimization/cut.gringo",
+		"/Users/filipegouveia/Documents/Projects/MagicApp/etc/design/index.html",
+		"/Users/filipegouveia/Documents/Projects/minisat/utils/System.cc",
+		"/Users/filipegouveia/Downloads/tmux-1.9a/cmd.c",
+		"/Volumes/F0C2EFABD4D9660E/Instructions.js",
+		"/Volumes/KINGSTON/The.Big.Bang.Theory.S08E11.HDTV.x264-LOL.srt"
+	],
+	"find":
+	{
+		"height": 0.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/filipegouveia/Documents/Projects/MagicApp",
+			"/Users/filipegouveia/Documents/Projects/MagicApp/dist",
+			"/Users/filipegouveia/Documents/Projects/MagicApp/app"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"goal(",
+			"init(",
+			"init",
+			"font-awesome"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"goal(c",
+			"init(c",
+			"goal"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8265,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2212,
+								2212
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 96.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/base.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 704,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								264,
+								264
+							]
+						],
+						"settings":
+						{
+							"auto_name": "base.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/base.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 904,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								192,
+								192
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Minimization/base.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 716,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								543,
+								543
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/goal-test.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 722,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/input-aronson.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 722,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/cut.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 376,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								363,
+								363
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/faro-in.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 273,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								182,
+								182
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/faro-out.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 275,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								187,
+								187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/Iterative/run.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 547,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								508,
+								508
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/Users/filipegouveia/Documents/Projects/clingo-4.5.4-macos-10.9/examples/examples/clingo/iclingo/example.lp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 178,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								178,
+								178
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/input-aronson.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 722,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14,
+								19
+							]
+						],
+						"settings":
+						{
+							"auto_name": "input.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/goal-test2.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 722,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								719,
+								719
+							]
+						],
+						"settings":
+						{
+							"auto_name": "goal-test.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/cut.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								345,
+								345
+							]
+						],
+						"settings":
+						{
+							"auto_name": "cut.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/run.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 518,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								493,
+								493
+							]
+						],
+						"settings":
+						{
+							"auto_name": "run.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/teste.clasp.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 677,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								669,
+								669
+							]
+						],
+						"settings":
+						{
+							"auto_name": "teste.clasp.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 19,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/faro-in.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 257,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								208,
+								208
+							]
+						],
+						"settings":
+						{
+							"auto_name": "faro-in.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 17,
+					"file": "/Users/filipegouveia/Documents/Magic/ASP/faro-out.gringo",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								36,
+								36
+							]
+						],
+						"settings":
+						{
+							"auto_name": "faro-out.gringo",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 20,
+					"type": "text"
+				},
+				{
+					"buffer": 18,
+					"file": "Magic/sass/magic.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1936,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								344,
+								17
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 19,
+					"file": "Magic/sass/_base.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 59,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 20,
+					"file": "Magic/css/magic.css",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 2575,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "magicapp.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 755.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

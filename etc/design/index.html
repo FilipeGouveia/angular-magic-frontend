@@ -27,6 +27,16 @@
           <li><a href="">People</a></li>
           <li><a href="">Stats</a></li>
           <li><a href="">Practice</a></li>
+          <li class="search push-right">
+            <form class="ink-form search-form validate" role="search" action="/pesquisa" method="GET" novalidate="">
+                <div class="control-group required">
+                    <div class="control">
+                        <input name="q" type="search" placeholder="pesquisa" class="ink-fv-required" required="" data-label="termo de pesquisa" data-rules="required|min_length[3]" value="">
+                    </div>
+                    <button type="submit" class="ink-button no-box"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+          </li>
         </ul>
       </nav>
     </div>
@@ -89,6 +99,18 @@
                             function drawChart() {
                               var data = google.visualization.arrayToDataTable([
                                 ['Performance', '#'],
+                                ['Twisting the Aces', 9],
+                                ['Card Warp', 15],
+                                ['Stolen Cards',  2],
+                                ['Twisting the Aces', 9],
+                                ['Card Warp', 15],
+                                ['Stolen Cards',  2],
+                                ['Twisting the Aces', 9],
+                                ['Card Warp', 15],
+                                ['Stolen Cards',  2],
+                                ['Twisting the Aces', 9],
+                                ['Card Warp', 15],
+                                ['Stolen Cards',  2],
                                 ['Twisting the Aces', 9],
                                 ['Card Warp', 15],
                                 ['Stolen Cards',  2]
